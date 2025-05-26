@@ -28,11 +28,7 @@ templates = Jinja2Templates(directory="src/frontend")
 engine = None
 
 origins = [
-    "http://localhost",
-    "http://localhost:3100/",
-    "http://localhost:3100/chat",
-    "http://0.0.0.0:3100/",
-    "http://0.0.0.0:3100/chat",
+    ['*']
 ]
 
 app.add_middleware(
