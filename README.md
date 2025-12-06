@@ -1,20 +1,60 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Legal Document RAG Chat Prototype
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+⚠️ **Quick Experimental Prototype** - Simple RAG experiment with legal documents. Not for production use.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+A basic proof-of-concept that lets you chat with legal documents using RAG (Retrieval-Augmented Generation). Built to experiment with LlamaIndex + Azure OpenAI on legal text.
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+## What it does
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+- Parses PDF legal documents (currently has a court opinion sample)
+- Chunks and indexes the text using vector embeddings  
+- Lets you ask questions about the document content
+- Returns AI-generated responses based on the document
+
+## Quick Start
+
+1. **Install dependencies**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. **Set environment variables** (or just hardcode in `rag.py`)
+
+   ```env
+   AZURE_OPENAI_CHAT_DEPLOYMENT_NAME=your_deployment
+   AZURE_OPENAI_EMBEDDINGS_DEPLOYMENT_NAME=your_embeddings
+   ```
+
+3. **Run it**
+
+   ```bash
+   uvicorn src.app.main:app --host=0.0.0.0 --port=3100
+   ```
+
+4. **Try it at** `http://localhost:3100`
+
+## What's inside
+
+- **FastAPI** - Simple web server
+- **LlamaIndex** - Handles RAG pipeline (chunking, embeddings, retrieval)  
+- **LlamaParse** - Extracts text from PDFs
+- **Azure OpenAI** - LLM and embeddings (API keys hardcoded in `rag.py`)
+- Basic HTML chat interface
+
+## Experiment with it
+
+- Ask questions about the legal document
+- Try different document types in `src/data/`
+- Modify chunk sizes, retrieval settings in the code
+- Test different prompt approaches
+
+## Limitations
+
+- Hardcoded API keys (not secure)
+- Basic error handling
+- Single document focus
+- No authentication
+- Don't use responses for actual legal advice
+
+Simple experiment, nothing fancy!

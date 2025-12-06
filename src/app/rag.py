@@ -18,7 +18,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-llamaparse_api_key = "llx-5bfaUGBLUcMfFr4B4UkDiuee6qQg4hrEOcmA4wU900gbYiAa"
+llamaparse_api_key = os.environ.get("LLAMAPARSE_API_KEY")
 
 
 async def load_or_parse_data():
@@ -52,8 +52,8 @@ async def load_or_parse_data():
 
 async def initialize_chat_embeddings() -> None:
 
-    azure_endpoint = "https://ragmongodbcoretest.openai.azure.com/"
-    api_key = "34103bff494d4d63b7af3b5d250613a3"
+    azure_endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT")
+    api_key = os.environ.get("AZURE_OPENAI_API_KEY")
     api_version = "2024-02-01"
 
     chat_deployment_name = os.environ.get("AZURE_OPENAI_CHAT_DEPLOYMENT_NAME")
